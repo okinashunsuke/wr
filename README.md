@@ -1,24 +1,44 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
+| Column             | Type    | Options     |
+| ------------------ | ------- | ----------- |
+| email              | string  | null: false |
+| encrypted_password | string  | null: false |
+| user_name          | string  | null: false |
+| position           | string  |             |
 
-Things you may want to cover:
+### Association
+- has_many : construction
 
-* Ruby version
 
-* System dependencies
+## construction テーブル
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| name            | string     | null: false                    |
+| place           | string     |                                |
+| partner_company | string     |                                |
+| price           | integer    |                                |
+| user            | references | foreign_key: true              |
+| type            | string     |                                |
+| schedule        | string     |                                |
 
-* Configuration
+### Association
+- belongs_to : user
+- has_many   : construction_type
 
-* Database creation
+## type テーブル
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| type         | string     | null: false                    |
+### Association
+- has_many   : construction_type
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## construction_type テーブル
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| construction | string     | null: false                    |
+| type         | string     | null: false                    |
+### Association
+- belongs_to : construction
+- belongs_to : type
