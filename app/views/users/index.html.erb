@@ -1,0 +1,17 @@
+<%= render "shared/header" %>
+<div class = "body"> 
+<h1>施工中現場一覧</h1>
+
+  <% @users.each do |user| %>
+   <%= link_to user.user_name + user.position, user_path(user.id) %><br>
+    <% @constructions .each do |construction| %>
+      <%if user.id == construction.user_id%></li>
+       <ul>
+         <li><%= link_to construction.name , construction_path(construction.id) %></li>
+       </ul>
+      <%end%>
+    <%end%>
+  <%end%><br>
+  <%= link_to "完工現場一覧" , constructions_path %>
+</div>
+

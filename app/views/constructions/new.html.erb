@@ -1,0 +1,70 @@
+<%= render "shared/header" %>
+
+<div class='account-page' id='account-page'>
+  <div class='account-page__inner clearfix'>
+    <div class='account-page__inner--left account-page__header'>
+      <h2>新規現場の登録</h2>
+    </div>
+    <div class='account-page__inner--right user-form'>
+      <%= form_with model: @construction, url: constructions_path, local: true do |f|%>
+
+        <div class='field'>
+          <div class='field-label'>
+            <%= f.label :工事名 %>
+          </div>
+          <div class='field-input'>
+            <%= f.text_field :name, autofocus: true%>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='field-label'>
+            <%= f.label :所在地%>
+          </div>
+          <div class='field-input'>
+            <%= f.text_field  :place%>
+          </div>
+        </div>
+   
+        <div class='field'>
+          <div class='field-label'>
+            <%= f.label :受注金額%>
+          </div>
+          <div class='field-input'>
+            <%= f.text_field  :price %>
+          </div>
+        </div>
+       
+        <div class='field'>
+          <div class='field-label'>
+            <%= f.label :完工予定%>
+          </div>
+          <div class='field-input'>
+            <%= f.text_field :schedule, :placeholder => "例 : 2025/12", autofocus: true%>
+          </div>
+        </div>
+
+        <div class='field'>
+          <div class='field-label'>
+            <%= f.label :状況%>
+          </div>
+          <div class='field-select'>
+            <%= f.select :doing, [["施工中", "施工中"], ["完工", "完工"]], include_blank: "選択して下さい" %>
+          </div>
+        </div>
+        
+        <div class='field'>
+          <div class='field-label'>
+            <%= f.label :担当者%>
+          </div>
+          <div class='field-select'>
+          <%= f.collection_select :user_id, User.all, :id, :user_name ,include_blank: "選択して下さい"%>
+          </div>
+        </div>
+
+        <div class='actions'>
+          <%= f.submit "登録", class: 'btn'%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

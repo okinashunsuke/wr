@@ -1,0 +1,78 @@
+<%= render "shared/header" %>
+<div class = "body"> 
+ <ul>
+  <li><%="現 場 名 ："%><%= link_to @construction.name,edit_construction_path, method: :get %></li>
+  <li><%="所 在 地 ：#{@construction.place}"%></li>
+  <li><%="受 注 額 ：#{@construction.price.to_s(:delimited, delimiter: ',')}円"%></li>
+  <li><%="担 当 者 ："%><%=link_to "#{@construction.user.user_name + @construction.user.position}",user_path(@construction.user.id)%></li> 
+  <li><%="状　　況：#{@construction.doing}"%></li>
+  <li><%="完工予定：#{@construction.schedule}"%></li>
+  <%# <li> %>
+    <%# <%= link_to "編集", edit_construction_path, method: :get %>
+    <%# <%= link_to "削除", construction_path, method: :delete %>
+  <%# </li> %>
+ </ul><br>
+ <%= link_to "カレンダー登録", new_calendar_path %>
+</div>
+
+<div class = "calendar">
+ <%= month_calendar events: @calendars do |date, calendar| %>
+ <div class = "calendar-day">
+ <%= link_to date , new_calendar_path%></div>
+  <% @calendars.each do |calendar| %>
+    <%if calendar.day  == date && calendar.construction_id == @construction.id %>
+      <li class = "calendar-day">
+       <%= link_to calendar.company ,edit_calendar_path(calendar.id) %><br>
+       <%= calendar.const_type %>
+       <%= "#{calendar.n_o_p}名" %></li>
+       <%# <%= link_to '削除', calendar_path(calendar.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  <% end %>
+  <% end %><br><br>
+</div>
+
+<div class = "body">
+  <% name_check = [] %>
+  <% @calendars.each do |calendar|%> 
+    <%unless name_check.include?(calendar.company) %> 
+      <%if calendar.construction_id == @construction.id %>
+        <%= calendar.company %>
+        <% @nops = Calendar.where(company: calendar.company).where(construction_id: @construction.id)%>
+           <li> <%= "#{@nops.sum { |hash| hash[:n_o_p]}}人工" %></li> 
+
+           <input class="ninku" id="ninku" value="<%= @nops.sum { |hash| hash[:n_o_p]} %>" >
+            <div class="price-content">
+          <span class="sell-yen">¥</span>
+          <input class="tanka" id="tanka" placeholder="単価を入力" >
+        </div>
+        <div class="price-content">
+          <span>合計</span>
+          <span>
+          <span id='seikyu'></span>円
+          </span>
+        </div>
+        
+        <% name_check << calendar.company %><br>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+
+        <div class="body">
+          <span id ='total'></span>
+          <span>
+          <span id='month'></span>円
+          </span>
+          <button id = "kei" type="button" name="aaa" value="aaa" style= width:30px; > <br><br><br><br><br><br>
+        </div>
+
+
+  
+  
+  
+  
+  
+ 
+
+

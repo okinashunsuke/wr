@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<%=@user.user_name + @user.position%>
+
+
+<table>
+  
+
+  <tbody>
+    <% @calendars.each do |calendar| %>
+      <tr>
+        <td><%= calendar.company %></td>
+        <td><%= calendar.start_time %></td>
+        <td><%= link_to 'Show', calendar %></td>
+        <td><%= link_to 'Edit', edit_calendar_path(calendar) %></td>
+        <td><%= link_to 'Destroy', calendar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Calendar', new_calendar_path %>
+
+
+<%= week_calendar events: @calendars do |date, calendar| %>
+  <%= date %>
+
+  <% @calendars.each do |calendar| %>
+    <div>
+      <%= calendar.company %>
+    </div>
+  <% end %>
+<% end %>
+
+
+

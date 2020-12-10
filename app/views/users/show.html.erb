@@ -1,0 +1,23 @@
+<%= render "shared/header" %>
+<div class = "body"> 
+  <%=@user.user_name + @user.position%><br>
+  <%= link_to "カレンダー登録", new_calendar_path %>
+</div>
+<div class = "calendar">
+  <%= week_calendar events: @calendars do |date, calendar| %>
+  <div class = "calendar-day">
+   <%= link_to date , new_calendar_path%></div>
+    <% @calendars.each do |calendar| %>
+      <%if calendar.day  == date && calendar.user_id == @user.id %>
+       <div class= "calendar-day">
+        <li class= "calendar-day">
+         <%= link_to calendar.construction.name , construction_path(calendar.construction.id) %><br>
+          <%= link_to calendar.company ,edit_calendar_path(calendar.id) %><br>
+          <%= calendar.const_type %>
+          <%= "#{calendar.n_o_p}名" %>
+          <%# <%= link_to '削除', calendar_path(calendar.id), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+       </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
