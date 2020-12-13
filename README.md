@@ -37,7 +37,7 @@
 - belongs_to : construction
 
 # アプリケーション名	
-- weeklyReport
+- WeeklyReport
 # アプリケーション概要	
 - 社員と現場の稼働状況を１週間、１ヶ月単位でまとめることができます。
 # URL
