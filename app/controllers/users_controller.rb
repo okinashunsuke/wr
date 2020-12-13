@@ -4,10 +4,6 @@ class UsersController < ApplicationController
   def index
     @users = User.all  
     @constructions = Construction.where(doing:"施工中")
-    # @user = User.find_by(params[:id])
-    # @construction = Construction.find_by(params[:id])   
-    # @calendar = Calendar.find_by(params[:id])
-    # @calendars = Calendar.all 
   end
 
   def show

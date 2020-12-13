@@ -11,24 +11,8 @@
         <li><%= link_to calendar.company ,edit_calendar_path(calendar.id) %>
             <%= calendar.const_type %>
             <%= "#{calendar.n_o_p}名" %></li>
-            <%# <%= link_to '削除', calendar_path(calendar.id), method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>
     </div>
   <% end %>
 <% end %>
 </div>
-
-
-
-<%# <p>
-  <strong>Name:</strong>
-  <%= @calendar.company %>
-<%# </p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @calendar.start_time %> 
-<%# </p>
-
-<%= link_to 'Edit', edit_calendar_path(@calendar) %> 
-<%# <%= link_to 'Back', calendars_path %>

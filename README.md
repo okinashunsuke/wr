@@ -1,105 +1,61 @@
 # README
 
 ## users テーブル
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| email              | string  | null: false |
-| encrypted_password | string  | null: false |
-| user_name          | string  | null: false |
-| position           | string  |             |
-
+| Column             | Type    | Options             |
+| ------------------ | ------- | ------------------- |
+| email              | string  | null: false         |
+| encrypted_password | string  | null: false         |
+| user_name          | string  | null: false         |
+| position           | string  |                     |
 ### Association
 - has_many : constructions
-- has_one  : calendar
-
-
+- has_many : calendar
 ## construction テーブル
-| Column          | Type       | Options           |
-| --------------- | ---------- | ----------------- |
-| name            | string     | null: false       |
-| place           | string     |                   | 
-| price           | bigint     |                   |
-| schedule        | string     |                   |
-| user            | references | foreign_key: true |
-| doing           | string     | null: false       |
+| Column             | Type       | Options           |
+| ------------------ | ---------- | ----------------- |
+| name               | string     | null: false       |
+| place              | string     |                   | 
+| price              | bigint     |                   |
+| schedule           | string     |                   |
+| user               | references | foreign_key: true |
+| doing              | string     | null: false       |
 ### Association
 - belongs_to : user
-- has_one    : calendar
-
-
+- has_many   : calendar
 ## calendar テーブル
-| Column          | Type       | Options           |
-| --------------- | ---------- | ----------------- |
-| construction    | references | foreign_key: true |
-| user            | references | foreign_key: true | 
-| const_type      | string     |                   |
-| company         | string     |                   | 
-| n_o_p           | integer    |                   |
-| start_time      | datetime   |                   |
-| when            | date       |                   |
+| Column             | Type       | Options           |
+| ------------------ | ---------- | ----------------- |
+| construction       | references |                   |
+| user               | references |                   | 
+| const_type         | string     |                   |
+| company            | string     |                   | 
+| n_o_p              | integer    |                   |
+| start_time         | datetime   |                   |
+| day                | date       |                   |
 ### Association
 - belongs_to : user
 - belongs_to : construction
 
-
 # アプリケーション名	
-- 
+- weeklyReport
 # アプリケーション概要	
-- このアプリケーションでできることを記述しましょう。
+- 社員と現場の稼働状況を１週間、１ヶ月単位でまとめることができます。
 # URL
 - デプロイ済みのURLを記述しましょう。デプロイが済んでいない場合は、デプロイ次第記述しましょう。
 # テスト用アカウント
 - ログイン機能等を実装した場合は、記述しましょう。またBasic認証等を設けている場合は、そのID/Passも記述しましょう。
 # 利用方法
-- このアプリケーションの利用方法を説明しましょう。
+- ①ユーザーを登録、②現場を登録、③カレンダー記入。登録ユーザーのみ閲覧、登録可能。
 # 目指した課題解決
-- このアプリケーションを通じて、どのような人の、どのような課題を解決したかったかを書きましょう。
+- 社員と現場の稼働状況の報告と共有を１アクションで行えるようにしました。紙で行う場合よりも時短、と省スペース化、どこからでもアクセス可能になります。
 # 洗い出した要件
-- スプレッドシートにまとめた要件定義を、マークダウンで記述しなおしましょう。
-# 実装した機能についてのGIFと説明
-- 実装した機能について、それぞれどのような特徴があるのか列挙しましょう。GIFを添えることで、イメージがしやすくなります。
+- 3	カレンダー機能	社員の仕事内容を確認、共有するため	"社員の1日の現場、使用会社、人数、内容を記入社員ごと、現場ごとに表示可能。"	社員、現場の稼働状況を報告、共有を１動作で完了させる。
+- 2	集計機能	毎月の作業員の人数と金額を集計するため	現場単位で１ヶ月ごとに、作業員数と金額を集計、表示し、請求額を把握する。	現場カレンダー内の会社名、人数、が表示。単価を記入し、1月の金額が表示される。
+- 1	現場一覧表示機能	稼働中の現場と担当者を一覧で表示する	一目でどれがどの仕事をしているか把握する。	登録ユーザーの中に担当現場が表示されるようになっている。
 # 実装予定の機能
-- 洗い出した要件の中から、今後実装予定のものがあれば記述しましょう。
+- 検索機能、コメント機能
 # データベース設計
-- ER図等を添付しましょう。
+- https://gyazo.com/a16713ce17f6c5c3dfa20f065f031695
 # ローカルでの動作方法
-- git cloneしてから、ローカルで動作をさせるまでに必要なコマンドを記述しましょう。この時、アプリケーション開発に使用した環境を併記することを忘れないでください（パッケージやRubyのバージョンなど）。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<% name_check = [] %>
-  <% @calendars.each do |calendar|%> 
-    <%unless name_check.include?(calendar.company) %> 
-      <%if calendar.construction_id == @construction.id %>
-        <%= calendar.company %>
-        <% @nops = Calendar.where(company: calendar.company).where(construction_id: @construction.id)%>
-           <li> <%= "#{@nops.sum { |hash| hash[:n_o_p]}}人工" %></li> 
-
-           <input id='ninku', value="<%= @nops.sum { |hash| hash[:n_o_p]}.to_i %>" >
-            <div class="price-content">
-          <span class="sell-yen">¥</span>
-          <input id='tanka', placeholder="単価を入力" >
-        </div>
-        <div class="price-content">
-          <span>販売手数料 (10%)</span>
-          <span>
-            <span id='seikyu'></span>円
-          </span>
-        </div>
-       
-        <% name_check << calendar.company %><br>
-      <% end %>
-    <% end %>
-  <% end %>
+- 開発環境 RubyOnRails6.00 GitHub VisualStudioCode SequelPro 
+git cloneしてから、ローカルで動作をさせるまでに必要なコマンドを記述しましょう。この時、アプリケーション開発に使用した環境を併記することを忘れないでください（パッケージやRubyのバージョンなど）。

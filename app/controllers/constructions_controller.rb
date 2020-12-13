@@ -1,6 +1,6 @@
 class ConstructionsController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :set_construction, only: [:show,:edit,:update,:destroy]
 
   def index
     @users = User.all  
@@ -22,19 +22,16 @@ class ConstructionsController < ApplicationController
   end
 
   def show
-    @construction = Construction.find(params[:id])
     @user = User.find_by(params[:id])
     @calendars = Calendar.all
     @calendar = Calendar.find_by(params[:id])
   end
 
   def edit
-    @construction = Construction.find(params[:id])
     @user = User.find(@construction.user_id)
   end
 
   def update
-    @construction = Construction.find(params[:id])
     if @construction.update(e_construction_params)
       redirect_to root_path
     else
@@ -43,7 +40,6 @@ class ConstructionsController < ApplicationController
   end
 
   def destroy
-    @construction = Construction.find(params[:id])
     if @construction.destroy
       redirect_to root_path
     else
@@ -53,16 +49,17 @@ class ConstructionsController < ApplicationController
 
   private
 
+  def set_construction
+    @construction = Construction.find(params[:id])
+  end
+
   def construction_params
    params.permit(:name,:place,:price,:user_id,:schedule,:doing)
   end
 
   def e_construction_params
     params.require(:construction).permit(:name,:place,:price,:user_id,:schedule,:doing, )
-   end
+   end  
 
-  
-
-  # .merge(user_id: current_user.id)
 end
 

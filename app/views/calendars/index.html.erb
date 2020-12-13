@@ -1,11 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <%=@user.user_name + @user.position%>
-
-
 <table>
-  
-
   <tbody>
     <% @calendars.each do |calendar| %>
       <tr>
@@ -17,16 +13,10 @@
       </tr>
     <% end %>
   </tbody>
-</table>
-
-<br>
-
+</table><br>
 <%= link_to 'New Calendar', new_calendar_path %>
-
-
 <%= week_calendar events: @calendars do |date, calendar| %>
   <%= date %>
-
   <% @calendars.each do |calendar| %>
     <div>
       <%= calendar.company %>

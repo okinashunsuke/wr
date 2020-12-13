@@ -1,7 +1,6 @@
 <%= render "shared/header" %>
 <div class = "body"> 
 <h1>施工中現場一覧</h1>
-
   <% @users.each do |user| %>
    <%= link_to user.user_name + user.position, user_path(user.id) %><br>
     <% @constructions .each do |construction| %>

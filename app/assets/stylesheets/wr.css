@@ -1,18 +1,15 @@
 * {
   /* margin: 0px;
   padding: 0px; */
-  background-color: pink;
+  background-color:white;
+  /* color:rgb(28, 225, 212); */
    }
-
-.html{
-  background-color: pink;
-}
  
 .account-page .account-page__inner {
   width: 80%;
   margin: 60px auto;
   padding: 60px;
-  background-color:pink;
+
   border: 1px solid pink;
   border-radius: 5px;
 }
@@ -43,12 +40,9 @@
   font-size: 14px;
   font-weight: 200;
 }
-.account-page .account-page__header .btn {
-  margin-top: 20px;
-  color: #fff;
-  background-color: #ccc;
-  font-size: 14px;
-}
+
+
+
 .account-page .field {
   margin-bottom: 10px;
 }
@@ -72,16 +66,7 @@
   padding: 10px;
   letter-spacing: 1px;
 }
-.account-page .btn {
-  display: inline-block;
-  height: 50px;
-  padding: 0 30px;
-  line-height: 50px;
-  letter-spacing: 1px;
-  text-align: center;
-  border: none;
-  border-radius: 2px;
-}
+
 .account-page input[type=submit] {
   float: left;
   margin-top: 20px;
@@ -130,33 +115,13 @@
 }
 
 
-
-.dltbtn {
-  display: inline-block;
-  height: 50px;
-  padding: 0 30px;
-  line-height: 50px;
-  letter-spacing: 1px;
-  text-align: center;
-  border: none;
-  border-radius: 2px;
-  margin-top: 20px;
-  margin-left: 50px;
-  color: #fff;
-  background-color: #38aef0;
-  font-size: 14px;
-  text-decoration: none;
-
-}
-
-.ninku {
+.nop {
   display:none;
 }
 
 .body{
   padding-left:20px ;
   font-family: 'arial unicode ms';
-  background-color: pink;
   font-size: 20px;
 
 }
@@ -170,5 +135,51 @@
   font-family: 'arial unicode ms';
   background-color: transparent !important;
   }
+
+  .actions{
+    width: 50%;
+    justify-content: space-between;
+    display: flex;
+  }
+  
+  .account-page .account-page__header .btn {
+    margin-top: 20px;
+    color: #fff;
+    background-color: #ccc;
+    font-size: 14px;
+  }
   
   
+  
+.dltbtn {
+  display: inline-block;
+  height: 50px;
+  min-width: 88px;
+  padding: 0 auto;
+  line-height: 50px;
+  letter-spacing: 1px;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+  
+  margin-top: 20px;
+  margin-left: 50px;
+  color: #fff;
+  background-color: #38aef0;
+  font-size: 14px;
+  text-decoration: none;
+  /* vertical-align: middle; */
+
+}
+  
+.account-page .btn {
+  display: inline-block;
+  height: 50px;
+  padding: 0 30px;
+  line-height: 50px;
+  letter-spacing: 1px;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+}
+

@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
 
   has_many :constructions 
-  has_one  :calendar
+  has_many :calendars
 end

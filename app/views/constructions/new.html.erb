@@ -7,7 +7,6 @@
     </div>
     <div class='account-page__inner--right user-form'>
       <%= form_with model: @construction, url: constructions_path, local: true do |f|%>
-
         <div class='field'>
           <div class='field-label'>
             <%= f.label :工事名 %>
@@ -24,7 +23,6 @@
             <%= f.text_field  :place%>
           </div>
         </div>
-   
         <div class='field'>
           <div class='field-label'>
             <%= f.label :受注金額%>
@@ -33,7 +31,6 @@
             <%= f.text_field  :price %>
           </div>
         </div>
-       
         <div class='field'>
           <div class='field-label'>
             <%= f.label :完工予定%>
@@ -42,7 +39,6 @@
             <%= f.text_field :schedule, :placeholder => "例 : 2025/12", autofocus: true%>
           </div>
         </div>
-
         <div class='field'>
           <div class='field-label'>
             <%= f.label :状況%>
@@ -51,7 +47,6 @@
             <%= f.select :doing, [["施工中", "施工中"], ["完工", "完工"]], include_blank: "選択して下さい" %>
           </div>
         </div>
-        
         <div class='field'>
           <div class='field-label'>
             <%= f.label :担当者%>
@@ -60,7 +55,6 @@
           <%= f.collection_select :user_id, User.all, :id, :user_name ,include_blank: "選択して下さい"%>
           </div>
         </div>
-
         <div class='actions'>
           <%= f.submit "登録", class: 'btn'%>
         </div>

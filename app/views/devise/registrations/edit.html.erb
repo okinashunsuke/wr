@@ -53,11 +53,9 @@
         </div>
 
         <div class='actions'>
-          <%= f.submit "更新",id:params[:id], class: 'btn'%>
+         <%= f.submit "更新",id:params[:id], class: 'btn'%>
+         <%= link_to '削除', user_registration_path, method: :delete, class: 'dltbtn', data: { confirm: 'Are you sure?' } %>
         </div>
-        <div class="actions">
-       <%= link_to '削除', user_registration_path, method: :delete, class: 'dltbtn', data: { confirm: 'Are you sure?' } %>
-      </div>
       </div>
     <% end %>
   </div>
