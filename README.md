@@ -43,7 +43,7 @@
 # URL
 - https://wm-report.herokuapp.com/
 # テスト用アカウント
-- email:1@com / pass:123abc
+- Email:1@com / Pass:123abc
 - Basic認証ID:admin / Pass:2222
 # 利用方法
 - ①ユーザーを登録、②現場を登録、③カレンダー記入。登録ユーザーのみ閲覧、登録可能。
