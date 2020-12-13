@@ -58,4 +58,3 @@
 - https://gyazo.com/a16713ce17f6c5c3dfa20f065f031695
 # ローカルでの動作方法
 - 開発環境 RubyOnRails6.00 GitHub VisualStudioCode SequelPro 
-git cloneしてから、ローカルで動作をさせるまでに必要なコマンドを記述しましょう。この時、アプリケーション開発に使用した環境を併記することを忘れないでください（パッケージやRubyのバージョンなど）。
