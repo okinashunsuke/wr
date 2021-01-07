@@ -32,9 +32,8 @@
         <%= calendar.company %>
         <% @nops = Calendar.where(company: calendar.company).where(construction_id: @construction.id)%>
            <li> <%= "#{@nops.sum { |hash| hash[:n_o_p]}}人工" %></li> 
-
            <input class= "nop" id="nop" value="<%= @nops.sum { |hash| hash[:n_o_p]} %>" >
-            <div class="price-content">
+           <div class="price-content">
           <span class="sell-yen">¥</span>
           <input id="price" placeholder="単価を入力" >
         </div>
@@ -44,7 +43,6 @@
           <span id='total'></span>円
           </span>
         </div>
-        
         <% name_check << calendar.company %><br>
       <% end %>
     <% end %>
