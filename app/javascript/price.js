@@ -12,3 +12,10 @@ window.addEventListener('input', () => {
      addTotalDom.innerHTML = total.toLocaleString()
     });
 });
+
+
+// $('.price<%=calendar.id%>').on('input', function(){
+//     const  = $(this).attr("id");
+//     alert(id);
+//     });
+    
