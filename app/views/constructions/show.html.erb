@@ -45,11 +45,14 @@
   <% end %>
  <% end %><br><br>
 </div>
-<div class = "body">
+
+<div class = "calculation">
   <% name_check = [] %>
   <% @calendars.each do |calendar|%> 
+  
     <%unless name_check.include?(calendar.company) %> 
       <%if calendar.construction_id == @construction.id %>
+      <div class = "calculation1">
         <%= calendar.company %>
         <% @nops = Calendar.where(company: calendar.company).where(construction_id: @construction.id)%>
            <li> <%= "#{@nops.sum { |hash| hash[:n_o_p]}}人工" %></li> 
@@ -65,10 +68,13 @@
           </span>
         </div>
         <% name_check << calendar.company %><br>
+      </div>
       <% end %>
     <% end %>
+  
   <% end %>
 </div>
+
 
 
 

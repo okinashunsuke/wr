@@ -276,4 +276,10 @@
 }
 
 
-  
+.calculation{
+  display: flex;
+}
+
+.calculation1{
+  margin-left:30px ;
+}
