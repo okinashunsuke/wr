@@ -6,7 +6,7 @@
 <div class = "calendar">
   <%= week_calendar events: @calendars do |date, calendar| %>
   <div class = "calendar-day">
-   <%= link_to date , new_calendar_path%></div>
+   <%= date %></div>
     <% @calendars.each do |calendar| %>
       <%if calendar.day  == date && calendar.user_id == @user.id %>
        <div class= "calendar-day">

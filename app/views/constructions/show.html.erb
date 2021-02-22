@@ -1,19 +1,40 @@
 <%= render "shared/header" %>
-<div class = "body"> 
- <ul>
-  <li><%="現 場 名 ："%><%= link_to @construction.name,edit_construction_path, method: :get %></li>
-  <li><%="所 在 地 ：#{@construction.place}"%></li>
-  <li><%="受 注 額 ：#{@construction.price.to_s(:delimited, delimiter: ',')}円"%></li>
-  <li><%="担 当 者 ："%><%=link_to "#{@construction.user.user_name + @construction.user.position}",user_path(@construction.user.id)%></li> 
-  <li><%="状　　況：#{@construction.doing}"%></li>
-  <li><%="完工予定：#{@construction.schedule}"%></li>
- </ul><br>
+<div class = "body">
+  <table class="table">
+    <tbody>
+      <tr>
+        <th class="table__col1">現場名</th>
+        <td class="table__col2"><%= link_to @construction.name,edit_construction_path, method: :get %></td>
+      </tr>
+      <tr>
+        <th class="table__col1">所在地</th>
+        <td class="table__col2"><%= @construction.place %></td>
+      </tr>
+      <tr>
+        <th class="table__col1">受注額</th>
+        <td class="table__col2"><%= "#{@construction.price.to_s(:delimited, delimiter: ',')}円" %></td>
+      </tr>
+      <tr>
+        <th class="table__col1">担当者</th>
+        <td class="table__col2"><%=link_to "#{@construction.user.user_name + @construction.user.position}",user_path(@construction.user.id)%> </td>
+      </tr>
+      <tr>
+        <th class="table__col1">施工状況</th>
+        <td class="table__col2"><%= @construction.doing %></td>
+      </tr>
+      <tr>
+        <th class="table__col1">完工予定</th>
+        <td class="table__col2"><%= @construction.schedule %></td>
+      </tr>
+    </tbody>
+  </table><br>
  <%= link_to "カレンダー登録", new_calendar_path %>
 </div>
 <div class = "calendar">
  <%= month_calendar events: @calendars do |date, calendar| %>
  <div class = "calendar-day">
- <%= link_to date , new_calendar_path%></div>
+ <%# <%= link_to date , new_calendar_path%>
+ <%=date%></div>
   <% @calendars.each do |calendar| %>
     <%if calendar.day  == date && calendar.construction_id == @construction.id %>
       <li class = "calendar-day">
@@ -60,3 +81,6 @@
   </span>
   <button id = "kei" type="button" name="aaa" value="aaa" style= width:30px; > <br><br><br><br><br><br>
 </div> %>
+
+
+

@@ -1,15 +1,31 @@
 <%= render "shared/header" %>
 <div class = "body">
   <h1>完工現場一覧</h1>
+
+  <div class = "thing0"> 
   <% @users.each do |user| %>
-   <%= link_to user.user_name + user.position, user_path(user.id) %><br>
+  <div class = "thing1"> 
+  <div class = "thing2"> 
+   <%= link_to user.user_name + user.position, user_path(user.id), class: "const-user" %><br></div> 
     <% @constructions .each do |construction| %>
       <%if user.id == construction.user_id%></li>
-       <ul>
-         <li><%= link_to construction.name , construction_path(construction.id) %></li>
-       </ul>
+       <div class = "thing3"> <ul>
+         <li class = li1><%= link_to construction.name , construction_path(construction.id) , class: "const-name"%></li>
+       </ul></div> 
       <%end%>
-    <%end%>
-  <%end%><br>
-  <%= link_to "施工中現場一覧" , root_path %>
+    <%end%></div> 
+  <%end%> 
+  </div> <br>
+  <%= link_to "施工中現場一覧へ" , root_path , class: "const"%>
 </div>
+
+
+
+
+
+
+
+
+
+
+
